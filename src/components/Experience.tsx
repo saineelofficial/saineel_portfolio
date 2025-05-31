@@ -40,15 +40,15 @@ const Experience = () => {
   ];
 
   return (
-    <section id="experience" className="py-20 px-6 bg-gray-900/50">
+    <section id="experience" className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 stagger-fade-in">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Briefcase className="w-8 h-8 text-blue-500" />
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text">Work Experience</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Work Experience</h2>
           </div>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
-          <p className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
             My professional journey and key accomplishments
           </p>
         </div>
@@ -61,27 +61,27 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <div key={index} className="relative flex items-start gap-8 animate-fade-in">
                 {/* Timeline dot */}
-                <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-gray-900 z-10"></div>
+                <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-white dark:border-gray-900 z-10"></div>
                 
                 <div className="ml-16 flex-1">
-                  <div className="bg-gray-800/50 p-8 rounded-2xl hover:bg-gray-800 transition-all duration-300 hover:scale-105 group">
+                  <div className="bg-white dark:bg-gray-800/50 p-8 rounded-2xl hover:shadow-lg dark:hover:bg-gray-800 transition-all duration-300 hover:scale-105 group border border-gray-200 dark:border-gray-700">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-100 group-hover:text-blue-400 transition-colors">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-blue-500 transition-colors">
                           {exp.position}
                         </h3>
-                        <p className="text-xl text-blue-400 font-semibold">{exp.company}</p>
+                        <p className="text-xl text-blue-500 font-semibold">{exp.company}</p>
                       </div>
-                      <span className="text-gray-400 font-medium mt-2 md:mt-0">{exp.period}</span>
+                      <span className="text-gray-600 dark:text-gray-400 font-medium mt-2 md:mt-0">{exp.period}</span>
                     </div>
                     
-                    <p className="text-gray-300 text-lg mb-6 leading-relaxed">{exp.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 text-lg mb-6 leading-relaxed">{exp.description}</p>
                     
                     <div className="space-y-3">
-                      <h4 className="text-lg font-semibold text-gray-200">Key Achievements:</h4>
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-200">Key Achievements:</h4>
                       <ul className="space-y-2">
                         {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start gap-3 text-gray-300">
+                          <li key={i} className="flex items-start gap-3 text-gray-600 dark:text-gray-300">
                             <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-2 flex-shrink-0"></div>
                             <span>{achievement}</span>
                           </li>

@@ -31,15 +31,15 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-6">
+    <section id="projects" className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 stagger-fade-in">
           <div className="flex items-center justify-center gap-3 mb-6">
             <Projector className="w-8 h-8 text-blue-500" />
-            <h2 className="text-4xl md:text-5xl font-bold gradient-text">Featured Projects</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Featured Projects</h2>
           </div>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
-          <p className="text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
             A showcase of my recent work and personal projects
           </p>
         </div>
@@ -70,8 +70,8 @@ const Projects = () => {
 
               <div className={`${index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''} space-y-6 animate-fade-in-right`}>
                 <div>
-                  <h3 className="text-3xl font-bold text-gray-100 mb-4">{project.title}</h3>
-                  <p className="text-gray-300 text-lg leading-relaxed">{project.description}</p>
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">{project.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">{project.description}</p>
                 </div>
 
                 <div className="flex flex-wrap gap-3">
@@ -86,10 +86,10 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-4">
-                  <button className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:scale-105 transition-all duration-300 hover-glow">
+                  <button className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-300">
                     Live Demo
                   </button>
-                  <button className="px-6 py-3 border border-gray-600 text-gray-300 rounded-lg font-medium hover:bg-gray-800 hover:border-gray-500 transition-all duration-300">
+                  <button className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                     View Code
                   </button>
                 </div>
