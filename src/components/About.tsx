@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { User } from "lucide-react";
-import aboutMeImage from "../assets/about_me_img.png";
+import linkedinProfileImg from "../assets/linkedin_profile_img.jpg";
+import resumePDF from "../assets/Sai_Neel_Resume.pdf";
 
 const About = () => {
   const [imageError, setImageError] = useState(false);
@@ -34,7 +35,7 @@ const About = () => {
                   </div>
                 ) : (
                   <img
-                    src={aboutMeImage}
+                    src={linkedinProfileImg}
                     alt="Sai Neelkanth Chary"
                     className="w-full h-full object-cover rounded-2xl relative z-10 hover:scale-105 transition-transform duration-300"
                     onError={handleImageError}
@@ -86,9 +87,14 @@ const About = () => {
             </div>
 
             <div className="flex justify-center md:justify-start">
-              <button className="w-full max-w-md md:w-auto mt-4 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:scale-105 transition-all duration-300 hover-glow">
+              <a
+                href={resumePDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full max-w-md md:w-auto mt-4 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:scale-105 transition-all duration-300 hover-glow cursor-pointer"
+              >
                 Download Resume
-              </button>
+              </a>
             </div>
           </div>
         </div>
