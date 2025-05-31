@@ -12,7 +12,7 @@ import Contact from '@/components/Contact';
 const Index = () => {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white transition-colors duration-300">
+      <div className="min-h-screen bg-white dark:bg-black text-gray-900 dark:text-white transition-colors duration-300">
         <Navigation />
         <Hero />
         <About />
