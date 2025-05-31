@@ -29,31 +29,31 @@ const About = () => {
           </div>
 
           <div className="space-y-6 animate-fade-in-right">
-            <h3 className="text-3xl font-bold text-gray-100 mb-6">
+            <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-6">
               Passionate Developer & Creative Problem Solver
             </h3>
             
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
               With over 5 years of experience in full-stack development, I specialize in creating 
               beautiful, functional, and user-centered digital experiences. My journey in tech 
               started with a curiosity about how things work and evolved into a passion for 
               building solutions that make a difference.
             </p>
 
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
               I believe in the power of clean code, innovative design, and continuous learning. 
               When I'm not coding, you can find me exploring new technologies, contributing to 
               open-source projects, or sharing knowledge with the developer community.
             </p>
 
             <div className="grid grid-cols-2 gap-6 mt-8">
-              <div className="text-center p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors duration-300">
-                <div className="text-3xl font-bold text-blue-400">50+</div>
-                <div className="text-gray-400">Projects Completed</div>
+              <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                <div className="text-3xl font-bold text-blue-500">50+</div>
+                <div className="text-gray-600 dark:text-gray-400">Projects Completed</div>
               </div>
-              <div className="text-center p-4 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors duration-300">
-                <div className="text-3xl font-bold text-purple-400">5+</div>
-                <div className="text-gray-400">Years Experience</div>
+              <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
+                <div className="text-3xl font-bold text-purple-500">5+</div>
+                <div className="text-gray-600 dark:text-gray-400">Years Experience</div>
               </div>
             </div>
 
