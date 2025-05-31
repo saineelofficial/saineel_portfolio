@@ -11,6 +11,7 @@ import {
 
 const Skills = () => {
   const [animated, setAnimated] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const skillCategories = [
     {
@@ -83,10 +84,11 @@ const Skills = () => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          setIsVisible(true);
           setAnimated(true);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.1, rootMargin: "50px" }
     );
 
     const skillsSection = document.getElementById("skills");
@@ -94,13 +96,30 @@ const Skills = () => {
       observer.observe(skillsSection);
     }
 
-    return () => observer.disconnect();
+    // Set default visibility after a short delay if section is already in view
+    const timer = setTimeout(() => {
+      const section = document.getElementById("skills");
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom >= 0) {
+          setIsVisible(true);
+          setAnimated(true);
+        }
+      }
+    }, 100);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
     <section
       id="skills"
-      className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950"
+      className={`py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950 transition-opacity duration-500 ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
     >
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10 sm:mb-16 stagger-fade-in">
@@ -123,10 +142,13 @@ const Skills = () => {
               <div
                 key={category.title}
                 className={`group relative bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 hover:scale-105 border border-gray-200 dark:border-gray-800 ${
-                  animated ? "animate-fade-in" : "opacity-0"
+                  animated ? "animate-fade-in" : ""
                 }`}
                 style={{
-                  animationDelay: `${index * 150}ms`,
+                  opacity: animated ? 1 : 0,
+                  transform: animated ? "translateY(0)" : "translateY(20px)",
+                  transition: "opacity 0.5s ease, transform 0.5s ease",
+                  transitionDelay: `${index * 150}ms`,
                 }}
               >
                 {/* Subtle gradient background that appears on hover */}
@@ -174,7 +196,11 @@ const Skills = () => {
         </div>
 
         {/* What I Do section with Apple-like styling */}
-        <div className="mt-12 sm:mt-16 md:mt-20">
+        <div
+          className={`mt-12 sm:mt-16 md:mt-20 transition-all duration-500 ${
+            animated ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
+        >
           <h3 className="text-2xl sm:text-3xl font-semibold text-center text-gray-900 dark:text-white mb-8 sm:mb-12">
             What I Do
           </h3>
