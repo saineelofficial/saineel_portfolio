@@ -1,13 +1,13 @@
-
-import React from 'react';
-import { ThemeProvider } from '@/contexts/ThemeContext';
-import Navigation from '@/components/Navigation';
-import Hero from '@/components/Hero';
-import About from '@/components/About';
-import Skills from '@/components/Skills';
-import Projects from '@/components/Projects';
-import Experience from '@/components/Experience';
-import Contact from '@/components/Contact';
+import React from "react";
+import { ThemeProvider } from "@/contexts/ThemeContext";
+import Navigation from "@/components/Navigation";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
+import Certificates from "@/components/Certificates";
+import Experience from "@/components/Experience";
+import Contact from "@/components/Contact";
 
 const Index = () => {
   return (
@@ -18,6 +18,7 @@ const Index = () => {
         <About />
         <Skills />
         <Projects />
+        <Certificates />
         <Experience />
         <Contact />
       </div>
