@@ -7,6 +7,9 @@ import {
   TestTube,
   GitBranch,
   Wrench,
+  GraduationCap,
+  Calendar,
+  MapPin,
 } from "lucide-react";
 
 const Skills = () => {
@@ -77,6 +80,36 @@ const Skills = () => {
       icon: Wrench,
       color: "from-gray-500 to-gray-600",
       skills: ["VS Code", "Postman", "Figma", "Slack", "Jira", "Notion"],
+    },
+  ];
+
+  const educationData = [
+    {
+      degree: "Master of Computer Science",
+      institution: "Stanford University",
+      location: "California, USA",
+      duration: "2020 - 2022",
+      gpa: "3.8/4.0",
+      description: "Specialized in Machine Learning and Software Engineering",
+      color: "from-red-500 to-red-600",
+    },
+    {
+      degree: "Bachelor of Computer Engineering",
+      institution: "University of California, Berkeley",
+      location: "California, USA",
+      duration: "2016 - 2020",
+      gpa: "3.7/4.0",
+      description: "Focus on Full-Stack Development and Data Structures",
+      color: "from-blue-500 to-blue-600",
+    },
+    {
+      degree: "Full-Stack Web Development",
+      institution: "freeCodeCamp",
+      location: "Online",
+      duration: "2019",
+      gpa: "Certificate",
+      description: "Comprehensive web development bootcamp",
+      color: "from-green-500 to-green-600",
     },
   ];
 
@@ -195,7 +228,7 @@ const Skills = () => {
           })}
         </div>
 
-        {/* What I Do section with Apple-like styling */}
+        {/* What I Do section */}
         <div
           className={`mt-12 sm:mt-16 md:mt-20 transition-all duration-500 ${
             animated ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
@@ -233,6 +266,94 @@ const Skills = () => {
                 End-to-end application development from concept to deployment.
               </p>
             </div>
+          </div>
+        </div>
+
+        {/* Education section */}
+        <div
+          className={`mt-12 sm:mt-16 md:mt-20 transition-all duration-700 ${
+            animated ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+          style={{ transitionDelay: "600ms" }}
+        >
+          <div className="flex items-center justify-center gap-3 mb-8 sm:mb-12">
+            <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />
+            <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 dark:text-white">
+              Education
+            </h3>
+          </div>
+          
+          <div className="space-y-6 sm:space-y-8">
+            {educationData.map((edu, index) => (
+              <div
+                key={edu.degree}
+                className={`group relative bg-white dark:bg-gray-900 rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 hover:scale-[1.02] border border-gray-200 dark:border-gray-800 overflow-hidden ${
+                  animated ? "animate-fade-in" : ""
+                }`}
+                style={{
+                  opacity: animated ? 1 : 0,
+                  transform: animated ? "translateX(0)" : "translateX(-30px)",
+                  transition: "all 0.6s ease",
+                  transitionDelay: `${800 + index * 200}ms`,
+                }}
+              >
+                {/* Animated gradient background */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-r ${edu.color} opacity-0 group-hover:opacity-5 transition-all duration-500`}
+                ></div>
+                
+                {/* Floating accent line */}
+                <div
+                  className={`absolute left-0 top-0 w-1 h-full bg-gradient-to-b ${edu.color} transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-top`}
+                ></div>
+
+                <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 lg:gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-start gap-4">
+                      <div
+                        className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-gradient-to-br ${edu.color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}
+                      >
+                        <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300 mb-1">
+                          {edu.degree}
+                        </h4>
+                        <p className="text-base sm:text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                          {edu.institution}
+                        </p>
+                        <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-3">
+                          {edu.description}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-3 text-sm text-gray-500 dark:text-gray-500">
+                          <div className="flex items-center gap-1">
+                            <MapPin className="w-4 h-4" />
+                            <span>{edu.location}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            <span>{edu.duration}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="lg:text-right">
+                    <div
+                      className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r ${edu.color} text-white shadow-sm group-hover:scale-105 transition-transform duration-300`}
+                    >
+                      {edu.gpa}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hover shimmer effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"></div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
