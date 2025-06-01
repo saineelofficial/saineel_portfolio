@@ -53,7 +53,7 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] sm:w-[90%] lg:w-[85%] max-w-5xl ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] sm:w-[90%] lg:w-[85%] max-w-6xl ${
         scrolled || mobileMenuOpen
           ? "bg-white/80 dark:bg-black/80 backdrop-blur-xl shadow-lg"
           : "bg-white/60 dark:bg-gray-900/60 backdrop-blur-md"

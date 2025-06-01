@@ -1,18 +1,25 @@
-
-import React, { useState, useRef } from 'react';
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
-import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
+import React, { useState, useRef } from "react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  Github,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const { toast } = useToast();
   const form = useRef<HTMLFormElement>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
+    name: "",
+    email: "",
+    message: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -27,17 +34,17 @@ const Contact = () => {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: 'Sai Neel',
+          to_name: "Sai Neel",
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      if (result.text === 'OK') {
+      if (result.text === "OK") {
         toast({
           title: "Message Sent!",
           description: "Thank you for your message. I'll get back to you soon!",
         });
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: "", email: "", message: "" });
       }
     } catch (error) {
       toast({
@@ -45,33 +52,63 @@ const Contact = () => {
         description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
-      console.error('Error sending email:', error);
+      console.error("Error sending email:", error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const socialLinks = [
-    { icon: Github, href: "https://www.github.com/saineelofficial", label: "GitHub", color: "#333" },
-    { icon: Linkedin, href: "https://www.linkedin.com/in/sai-neel", label: "LinkedIn", color: "#0077B5" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "#1DA1F2" }
+    {
+      icon: Github,
+      href: "https://www.github.com/saineelofficial",
+      label: "GitHub",
+      color: "#333 dark:text-white",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/sai-neel",
+      label: "LinkedIn",
+      color: "#0077B5",
+    },
+    { icon: Twitter, href: "#", label: "Twitter", color: "#1DA1F2" },
   ];
 
   const contactInfo = [
-    { icon: Mail, label: "Email", value: "emailsforsai.work@gmail.com", href: "mailto:emailsforsai.work@gmail.com" },
-    { icon: Phone, label: "Phone", value: "+1 (240) 375-0200", href: "tel:+12403750200" },
-    { icon: MapPin, label: "Location", value: "Washington, D.C.", href: "https://maps.app.goo.gl/QmrJn2JmFeYrsAVU6" }
+    {
+      icon: Mail,
+      label: "Email",
+      value: "emailsforsai.work@gmail.com",
+      href: "mailto:emailsforsai.work@gmail.com",
+    },
+    {
+      icon: Phone,
+      label: "Phone",
+      value: "+1 (240) 375-0200",
+      href: "tel:+12403750200",
+    },
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Washington, D.C.",
+      href: "https://maps.app.goo.gl/QmrJn2JmFeYrsAVU6",
+    },
   ];
 
   return (
-    <section id="contact" className="py-20 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-20 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 relative overflow-hidden"
+    >
       {/* Animated background elements */}
       <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
         {[...Array(9)].map((_, i) => (
@@ -91,7 +128,7 @@ const Contact = () => {
               delay: i * 0.5,
             }}
             style={{
-              position: 'absolute',
+              position: "absolute",
               left: `${(i % 3) * 33}%`,
               top: `${Math.floor(i / 3) * 33}%`,
             }}
@@ -112,19 +149,20 @@ const Contact = () => {
             <motion.span
               className="block bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
               animate={{
-                backgroundPosition: ['0%', '100%'],
+                backgroundPosition: ["0%", "100%"],
               }}
               transition={{
                 duration: 5,
                 repeat: Infinity,
-                repeatType: 'reverse',
+                repeatType: "reverse",
               }}
             >
               Amazing Together
             </motion.span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Ready to bring your ideas to life? I'm always excited to work on new projects and collaborate with innovative teams.
+            Ready to bring your ideas to life? I'm always excited to work on new
+            projects and collaborate with innovative teams.
           </p>
         </motion.div>
 
@@ -142,16 +180,23 @@ const Contact = () => {
                 Send me a message
                 <motion.div
                   animate={{ rotate: [0, 14, -8, 0] }}
-                  transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
+                  transition={{
+                    duration: 0.5,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                  }}
                 >
                   👋
                 </motion.div>
               </h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="group">
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Full Name
                     </label>
                     <input
@@ -165,9 +210,12 @@ const Contact = () => {
                       placeholder="Your name"
                     />
                   </div>
-                  
+
                   <div className="group">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                    >
                       Email Address
                     </label>
                     <input
@@ -184,7 +232,10 @@ const Contact = () => {
                 </div>
 
                 <div className="group">
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2"
+                  >
                     Your Message
                   </label>
                   <textarea
@@ -221,7 +272,9 @@ const Contact = () => {
           >
             {/* Contact Information */}
             <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Contact Information</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Contact Information
+              </h3>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.a
@@ -234,8 +287,12 @@ const Contact = () => {
                       <info.icon className="w-6 h-6" />
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900 dark:text-white">{info.label}</h4>
-                      <p className="text-gray-600 dark:text-gray-400">{info.value}</p>
+                      <h4 className="font-medium text-gray-900 dark:text-white">
+                        {info.label}
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {info.value}
+                      </p>
                     </div>
                   </motion.a>
                 ))}
@@ -244,7 +301,9 @@ const Contact = () => {
 
             {/* Social Links */}
             <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Connect with Me</h3>
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                Connect with Me
+              </h3>
               <div className="flex justify-center gap-6">
                 {socialLinks.map((social, index) => (
                   <motion.a
