@@ -1,12 +1,11 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Projector, Eye } from 'lucide-react';
 
 const Projects = () => {
-  const [projectViews, setProjectViews] = useState({
-    1: 1842,
-    2: 1367,
-    3: 2156
+  const [projectViews, setProjectViews] = useState(() => {
+    const saved = localStorage.getItem('projectViews');
+    return saved ? JSON.parse(saved) : { 1: 1842, 2: 1367, 3: 2156 };
   });
 
   const projects = [
@@ -36,19 +35,13 @@ const Projects = () => {
     }
   ];
 
-  // Simulate live view counter updates for projects
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProjectViews(prev => {
-        const newViews = { ...prev };
-        const projectId = Math.floor(Math.random() * 3) + 1;
-        newViews[projectId] += Math.floor(Math.random() * 2) + 1;
-        return newViews;
-      });
-    }, 7000);
-
-    return () => clearInterval(interval);
-  }, []);
+  const handleProjectInteraction = (projectId: number) => {
+    const newViews = { ...projectViews };
+    newViews[projectId] = (newViews[projectId] || 0) + 1;
+    setProjectViews(newViews);
+    localStorage.setItem('projectViews', JSON.stringify(newViews));
+    console.log(`Project ${projectId} views: ${newViews[projectId]}`);
+  };
 
   return (
     <section id="projects" className="py-20 px-6 bg-white dark:bg-gray-900">
@@ -88,7 +81,10 @@ const Projects = () => {
                   </div>
                   
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                    <button className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors">
+                    <button 
+                      onClick={() => handleProjectInteraction(project.id)}
+                      className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors"
+                    >
                       View Project
                     </button>
                   </div>
@@ -113,10 +109,16 @@ const Projects = () => {
                 </div>
 
                 <div className="flex gap-4">
-                  <button className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-300">
+                  <button 
+                    onClick={() => handleProjectInteraction(project.id)}
+                    className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-300"
+                  >
                     Live Demo
                   </button>
-                  <button className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                  <button 
+                    onClick={() => handleProjectInteraction(project.id)}
+                    className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+                  >
                     View Code
                   </button>
                 </div>

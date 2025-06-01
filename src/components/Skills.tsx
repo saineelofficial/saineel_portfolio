@@ -16,7 +16,9 @@ import {
 const Skills = () => {
   const [animated, setAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [portfolioViews, setPortfolioViews] = useState(1247);
+  const [portfolioViews, setPortfolioViews] = useState(() => {
+    return parseInt(localStorage.getItem('portfolioViews') || '1247');
+  });
 
   const skillCategories = [
     {
@@ -112,6 +114,10 @@ const Skills = () => {
         if (entries[0].isIntersecting) {
           setIsVisible(true);
           setAnimated(true);
+          // Increment portfolio view count when user visits the skills section
+          const newViewCount = portfolioViews + 1;
+          setPortfolioViews(newViewCount);
+          localStorage.setItem('portfolioViews', newViewCount.toString());
         }
       },
       { threshold: 0.1, rootMargin: "50px" }
