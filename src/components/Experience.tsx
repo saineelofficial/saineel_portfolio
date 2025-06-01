@@ -5,14 +5,15 @@ import { Briefcase } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      company: "TechCorp Solutions",
-      position: "Senior Full Stack Developer",
-      period: "2022 - Present",
-      description: "Leading development of enterprise applications using React, Node.js, and cloud technologies. Mentoring junior developers and implementing best practices.",
+      company: "PVK Corp",
+      position: "Software Engineer",
+      period: "Aug 2024 - Present",
+      description: "Built and scaled a real-time event-tracking platform using AWS and React to support enterprise-grade customer engagement.",
       achievements: [
-        "Reduced application load time by 40% through optimization",
-        "Led team of 5 developers on major product redesign",
-        "Implemented CI/CD pipeline improving deployment efficiency"
+        "Designed a modular React.js interface with a Node.js backend on AWS Lambda and DynamoDB, enhancing user engagement by 20%",
+        "Partnered in automating CI/CD with GitLab and embedded Cypress/Jest tests, cutting deployment downtime by 40%",
+        "Resolved critical incidents 35% faster using CloudWatch and Splunk, boosting system reliability",
+        "Led frontend performance tuning and code reviews to establish best practices across the team"
       ]
     },
     {

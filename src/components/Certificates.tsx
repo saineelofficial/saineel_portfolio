@@ -16,6 +16,12 @@ import jiraLogo from "../assets/certifications_logo/atlassian_jira.png";
 import sfPd2Logo from "../assets/certifications_logo/salesforce_platform_developer_II.png";
 import sfPd1Logo from "../assets/certifications_logo/salesfoece_platform_developer_I.png";
 import sfAdminLogo from "../assets/certifications_logo/salesforce_administrator.png";
+import AWS from "../assets/certificates_pdf/AWS_Developer.pdf";
+import meta_frontend from "../assets/certificates_pdf/Meta_Frontend.pdf";
+import atlassian_jira from "../assets/certificates_pdf/Atlassian_Jira.pdf";
+import salesforce_platform_developer_II from "../assets/certificates_pdf/Platform_Developer_II.pdf";
+import salesforce_platform_developer_I from "../assets/certificates_pdf/Platform_Developer_I.pdf";
+import salesforce_administrator from "../assets/certificates_pdf/Administrator.pdf";
 
 interface Certificate {
   title: string;
@@ -25,68 +31,75 @@ interface Certificate {
   expiryDate: string;
   description: string;
   logo: string;
+  pdfPath: string;
 }
 
 const certificates: Certificate[] = [
   {
     title: "AWS Certified Developer - Associate",
     organization: "Amazon Web Services",
-    credentials: "AWS-DVA-C02",
-    issueDate: "January 2024",
-    expiryDate: "January 2027",
+    credentials: "d19acf00a24543ddba7dd7422839de50",
+    issueDate: "May 2024",
+    expiryDate: "May 2028",
     description:
       "Expertise in developing and maintaining applications on AWS. Proficient in writing, deploying, and debugging cloud-based applications using AWS services, CI/CD pipelines, and serverless architectures. Skilled in implementing security best practices and optimizing application performance.",
     logo: awsDevLogo,
+    pdfPath: AWS,
   },
   {
     title: "Meta Certified Frontend Developer",
     organization: "Meta",
-    credentials: "MFE-001",
-    issueDate: "February 2024",
-    expiryDate: "February 2026",
+    credentials: "TG9S4YBUQ5LG",
+    issueDate: "January 2023",
+    expiryDate: "Unexpired",
     description:
       "Advanced proficiency in frontend development using React and related technologies. Expertise in building responsive, accessible, and performant web applications following Meta's best practices and design principles.",
     logo: metaFrontendLogo,
+    pdfPath: meta_frontend,
   },
   {
     title: "Atlassian Jira Certification",
     organization: "Atlassian",
-    credentials: "AJC-001",
-    issueDate: "January 2024",
-    expiryDate: "January 2026",
+    credentials: "PSX5BFYJ73GZ",
+    issueDate: "May 2024",
+    expiryDate: "Unexpired",
     description:
       "Demonstrated expertise in Jira administration and project management. Proficient in configuring and optimizing Jira workflows, managing user permissions, and implementing agile methodologies using Jira's features.",
     logo: jiraLogo,
+    pdfPath: atlassian_jira,
   },
   {
     title: "Salesforce Certified Platform Developer II",
     organization: "Salesforce",
-    credentials: "SF-PD2-001",
-    issueDate: "February 2024",
-    expiryDate: "February 2026",
+    credentials: "5588835",
+    issueDate: "January 2025",
+    expiryDate: "Active",
     description:
       "Advanced expertise in developing complex applications on the Salesforce platform. Mastery in Apex programming, Lightning components, integration patterns, and large-scale application architecture. Skilled in implementing advanced security measures and optimizing application performance.",
     logo: sfPd2Logo,
+    pdfPath: salesforce_platform_developer_II,
   },
   {
     title: "Salesforce Certified Platform Developer I",
     organization: "Salesforce",
-    credentials: "SF-PD1-001",
-    issueDate: "December 2023",
-    expiryDate: "December 2025",
+    credentials: "5159516",
+    issueDate: "October 2024",
+    expiryDate: "Active",
     description:
       "Expertise in developing custom applications on the Salesforce platform using Apex and Visualforce. Skilled in building scalable solutions following best practices and implementing efficient data models.",
     logo: sfPd1Logo,
+    pdfPath: salesforce_platform_developer_I,
   },
   {
     title: "Salesforce Certified Administrator",
     organization: "Salesforce",
-    credentials: "SF-ADM-001",
-    issueDate: "November 2023",
-    expiryDate: "November 2025",
+    credentials: "5152626",
+    issueDate: "October 2024",
+    expiryDate: "Active",
     description:
       "Proficient in managing and configuring Salesforce organizations. Expert in user administration, security controls, data management, and workflow automation. Skilled in customizing the platform to meet business requirements and optimize user experience.",
     logo: sfAdminLogo,
+    pdfPath: salesforce_administrator,
   },
 ];
 
@@ -123,8 +136,7 @@ const Certificates = () => {
     };
   }, []);
 
-  // Calculate number of frames
-  const numberOfFrames = Math.ceil(certificates.length / visibleSlides);
+
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
@@ -164,7 +176,8 @@ const Certificates = () => {
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
+    const currentIndex = emblaApi.selectedScrollSnap();
+    setSelectedIndex(currentIndex);
     setPrevBtnDisabled(!emblaApi.canScrollPrev());
     setNextBtnDisabled(!emblaApi.canScrollNext());
   }, [emblaApi]);
@@ -305,7 +318,7 @@ const Certificates = () => {
                       </div>
 
                       {/* Verify Button */}
-                      <button className="w-full px-4 py-2 text-xs font-medium text-center text-blue-500 hover:text-white border border-blue-500 rounded-lg hover:bg-blue-500 transition-all duration-300">
+                      <button className="w-full px-4 py-2 text-xs font-medium text-center text-blue-500 hover:text-white border border-blue-500 rounded-lg hover:bg-blue-500 transition-all duration-300" onClick={() => window.open(cert.pdfPath, "_blank")}>
                         Verify Certificate
                       </button>
                     </div>
@@ -316,20 +329,7 @@ const Certificates = () => {
           </div>
 
           {/* Dot indicators */}
-          <div className="flex justify-center gap-3 mt-8">
-            {[...Array(numberOfFrames)].map((_, index) => (
-              <button
-                key={index}
-                onClick={() => emblaApi?.scrollTo(index * visibleSlides)}
-                className={`h-2.5 rounded-full transition-all duration-500 ${
-                  Math.floor(selectedIndex / visibleSlides) === index
-                    ? "w-8 bg-gradient-to-r from-blue-500 to-purple-600"
-                    : "w-2.5 bg-gray-300 dark:bg-gray-700 hover:bg-blue-300 dark:hover:bg-blue-700"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+          {/*  */}
         </div>
       </div>
     </section>
