@@ -10,11 +10,13 @@ import {
   GraduationCap,
   Calendar,
   MapPin,
+  Eye,
 } from "lucide-react";
 
 const Skills = () => {
   const [animated, setAnimated] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [portfolioViews, setPortfolioViews] = useState(1247);
 
   const skillCategories = [
     {
@@ -102,15 +104,6 @@ const Skills = () => {
       description: "Focus on Full-Stack Development and Data Structures",
       color: "from-blue-500 to-blue-600",
     },
-    {
-      degree: "Full-Stack Web Development",
-      institution: "freeCodeCamp",
-      location: "Online",
-      duration: "2019",
-      gpa: "Certificate",
-      description: "Comprehensive web development bootcamp",
-      color: "from-green-500 to-green-600",
-    },
   ];
 
   useEffect(() => {
@@ -147,6 +140,15 @@ const Skills = () => {
     };
   }, []);
 
+  // Simulate live view counter updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPortfolioViews(prev => prev + Math.floor(Math.random() * 3));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="skills"
@@ -155,6 +157,16 @@ const Skills = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto">
+        {/* Portfolio Views Counter */}
+        <div className="flex justify-end mb-4">
+          <div className="flex items-center gap-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-200 dark:border-gray-800">
+            <Eye className="w-4 h-4 text-blue-500" />
+            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              {portfolioViews.toLocaleString()} views
+            </span>
+          </div>
+        </div>
+
         <div className="text-center mb-10 sm:mb-16 stagger-fade-in">
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
             <Star className="w-6 h-6 sm:w-8 sm:h-8 text-blue-500" />

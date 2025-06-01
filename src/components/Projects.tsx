@@ -1,8 +1,14 @@
 
-import React from 'react';
-import { Projector } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Projector, Eye } from 'lucide-react';
 
 const Projects = () => {
+  const [projectViews, setProjectViews] = useState({
+    1: 1842,
+    2: 1367,
+    3: 2156
+  });
+
   const projects = [
     {
       id: 1,
@@ -30,8 +36,22 @@ const Projects = () => {
     }
   ];
 
+  // Simulate live view counter updates for projects
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setProjectViews(prev => {
+        const newViews = { ...prev };
+        const projectId = Math.floor(Math.random() * 3) + 1;
+        newViews[projectId] += Math.floor(Math.random() * 2) + 1;
+        return newViews;
+      });
+    }, 7000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="projects" className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+    <section id="projects" className="py-20 px-6 bg-white dark:bg-gray-900">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 stagger-fade-in">
           <div className="flex items-center justify-center gap-3 mb-6">
@@ -60,6 +80,13 @@ const Projects = () => {
                     className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  {/* View Counter */}
+                  <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full flex items-center gap-2">
+                    <Eye className="w-4 h-4" />
+                    <span className="text-sm font-medium">{projectViews[project.id]?.toLocaleString()}</span>
+                  </div>
+                  
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <button className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors">
                       View Project
@@ -89,7 +116,7 @@ const Projects = () => {
                   <button className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-300">
                     Live Demo
                   </button>
-                  <button className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+                  <button className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
                     View Code
                   </button>
                 </div>
