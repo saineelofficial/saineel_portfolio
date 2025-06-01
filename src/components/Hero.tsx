@@ -1,28 +1,206 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
+
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  opacity: number;
+}
 
 const Hero = () => {
   const [displayText, setDisplayText] = useState("");
-  const fullText = "Full Stack Developer";
+  const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const titles = [
+    "Full Stack Developer",
+    "Software Engineer",
+    "ReactJS Developer",
+    "AWS Certified",
+    "Salesforce Certified",
+  ];
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const particlesRef = useRef<Particle[]>([]);
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const animationFrameRef = useRef<number>();
+  const { isDark } = useTheme();
 
+  // Text animation with multiple titles
   useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= fullText.length) {
-        setDisplayText(fullText.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
+    let timeout: NodeJS.Timeout;
+    const currentTitle = titles[currentTitleIndex];
+    const typingSpeed = isDeleting ? 50 : 100; // Faster deletion, slower typing
+    const delayBetweenTitles = 2000; // Delay before switching titles
 
-    return () => clearInterval(timer);
-  }, []);
+    if (!isDeleting && displayText === currentTitle) {
+      // Wait before starting to delete
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, delayBetweenTitles);
+    } else if (isDeleting && displayText === "") {
+      // Move to next title
+      setIsDeleting(false);
+      setCurrentTitleIndex((prev) => (prev + 1) % titles.length);
+    } else {
+      // Handle typing/deleting
+      timeout = setTimeout(() => {
+        setDisplayText((prev) => {
+          if (isDeleting) {
+            return prev.slice(0, -1);
+          } else {
+            return currentTitle.slice(0, prev.length + 1);
+          }
+        });
+      }, typingSpeed);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, currentTitleIndex, titles]);
+
+  // Initialize particles
+  const initParticles = () => {
+    const particles: Particle[] = [];
+    const numParticles = 60;
+
+    for (let i = 0; i < numParticles; i++) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 2.5 + 2,
+        speedX: (Math.random() - 0.5) * 0.5,
+        speedY: (Math.random() - 0.5) * 0.5,
+        opacity: Math.random() * 0.4 + 0.6,
+      });
+    }
+
+    return particles;
+  };
+
+  // Animation setup
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseRef.current = {
+        x: e.clientX,
+        y: e.clientY,
+      };
+    };
+
+    // Initialize
+    handleResize();
+    particlesRef.current = initParticles();
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+
+    // Animation loop
+    const animate = () => {
+      if (!ctx || !canvas) return;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particlesRef.current.forEach((particle, i) => {
+        // Update particle position
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+
+        // Mouse interaction
+        const dx = mouseRef.current.x - particle.x;
+        const dy = mouseRef.current.y - particle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const maxDistance = 200;
+
+        if (distance < maxDistance) {
+          const force = (maxDistance - distance) / maxDistance;
+          particle.speedX += (dx / distance) * force * 0.02;
+          particle.speedY += (dy / distance) * force * 0.02;
+        }
+
+        // Speed limit
+        const maxSpeed = 2;
+        const speed = Math.sqrt(
+          particle.speedX * particle.speedX + particle.speedY * particle.speedY
+        );
+        if (speed > maxSpeed) {
+          particle.speedX = (particle.speedX / speed) * maxSpeed;
+          particle.speedY = (particle.speedY / speed) * maxSpeed;
+        }
+
+        // Add some friction
+        particle.speedX *= 0.99;
+        particle.speedY *= 0.99;
+
+        // Wrap around edges
+        if (particle.x < 0) particle.x = canvas.width;
+        if (particle.x > canvas.width) particle.x = 0;
+        if (particle.y < 0) particle.y = canvas.height;
+        if (particle.y > canvas.height) particle.y = 0;
+
+        // Draw particle with theme-aware opacity
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        const particleOpacity = isDark
+          ? particle.opacity * 0.9
+          : particle.opacity * 1.4;
+        ctx.fillStyle = `rgba(96, 165, 250, ${particleOpacity})`; // blue-400 color
+        ctx.fill();
+
+        // Draw connections with theme-aware opacity
+        particlesRef.current.forEach((otherParticle, j) => {
+          if (i === j) return;
+          const dx = particle.x - otherParticle.x;
+          const dy = particle.y - otherParticle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
+            const lineOpacity = isDark ? 0.35 : 0.4;
+            ctx.strokeStyle = `rgba(96, 165, 250, ${
+              lineOpacity * (1 - distance / 120)
+            })`;
+            ctx.stroke();
+          }
+        });
+      });
+
+      animationFrameRef.current = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [isDark]); // Added isDark to dependencies
 
   return (
     <section
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden bg-white dark:bg-black px-4 sm:px-6 lg:px-8"
     >
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ opacity: 0.6 }}
+      />
+
       {/* Subtle background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-10 sm:top-20 left-10 sm:left-20 w-48 sm:w-72 h-48 sm:h-72 bg-blue-500/5 dark:bg-blue-500/10 rounded-full blur-3xl animate-float"></div>
@@ -38,7 +216,7 @@ const Hero = () => {
         </div>
 
         <div className="h-12 sm:h-16 md:h-20 mb-4 sm:mb-6 md:mb-8">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-600 dark:text-gray-400 font-light">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-600 dark:text-gray-400 font-light min-h-[1.5em]">
             {displayText}
             <span className="animate-blink">|</span>
           </h2>
