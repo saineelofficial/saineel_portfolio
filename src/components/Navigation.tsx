@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Switch } from "@/components/ui/switch";
@@ -86,9 +87,9 @@ const Navigation = () => {
           </div>
 
           {/* Right side items */}
-          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
             {/* Theme Toggle */}
-            <div className="hidden sm:flex items-center bg-gray-100/50 dark:bg-gray-800/50 rounded-full p-1.5">
+            <div className="flex items-center bg-gray-100/50 dark:bg-gray-800/50 rounded-full p-1.5">
               <span className="text-sm text-gray-600 dark:text-gray-400 px-1.5 sm:px-2">
                 ☀️
               </span>
@@ -101,11 +102,6 @@ const Navigation = () => {
                 🌙
               </span>
             </div>
-
-            {/* Hire Me Button - Hidden on mobile */}
-            <button className="hidden sm:block px-4 sm:px-5 lg:px-6 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-full font-medium transition-all duration-300 text-sm shadow-sm hover:shadow-md hover:-translate-y-0.5">
-              Hire Me
-            </button>
 
             {/* Mobile/Tablet Menu Button */}
             <button
@@ -153,13 +149,6 @@ const Navigation = () => {
                       onCheckedChange={toggleTheme}
                       className="data-[state=checked]:bg-blue-600 data-[state=unchecked]:bg-gray-300"
                     />
-                  </div>
-
-                  {/* Mobile Hire Me Button - Only show on mobile */}
-                  <div className="sm:hidden p-2">
-                    <button className="w-full px-4 py-2.5 bg-blue-500 hover:bg-blue-600 text-white rounded-xl font-medium transition-all duration-300 text-sm shadow-sm hover:shadow-md">
-                      Hire Me
-                    </button>
                   </div>
                 </div>
               </div>

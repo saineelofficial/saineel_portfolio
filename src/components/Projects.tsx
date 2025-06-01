@@ -5,7 +5,7 @@ import { Projector, Eye } from 'lucide-react';
 const Projects = () => {
   const [projectViews, setProjectViews] = useState(() => {
     const saved = localStorage.getItem('projectViews');
-    return saved ? JSON.parse(saved) : { 1: 1842, 2: 1367, 3: 2156 };
+    return saved ? JSON.parse(saved) : { 1: 0, 2: 0, 3: 0 };
   });
 
   const projects = [
