@@ -11,6 +11,8 @@ import Autoplay from "embla-carousel-autoplay";
 
 // Import certification logos
 import awsDevLogo from "../assets/certifications_logo/AWS_Developer.png";
+import metaFrontendLogo from "../assets/certifications_logo/meta_frontend_dev.png";
+import jiraLogo from "../assets/certifications_logo/atlassian_jira.png";
 import sfPd2Logo from "../assets/certifications_logo/salesforce_platform_developer_II.png";
 import sfPd1Logo from "../assets/certifications_logo/salesfoece_platform_developer_I.png";
 import sfAdminLogo from "../assets/certifications_logo/salesforce_administrator.png";
@@ -35,6 +37,26 @@ const certificates: Certificate[] = [
     description:
       "Expertise in developing and maintaining applications on AWS. Proficient in writing, deploying, and debugging cloud-based applications using AWS services, CI/CD pipelines, and serverless architectures. Skilled in implementing security best practices and optimizing application performance.",
     logo: awsDevLogo,
+  },
+  {
+    title: "Meta Certified Frontend Developer",
+    organization: "Meta",
+    credentials: "MFE-001",
+    issueDate: "February 2024",
+    expiryDate: "February 2026",
+    description:
+      "Advanced proficiency in frontend development using React and related technologies. Expertise in building responsive, accessible, and performant web applications following Meta's best practices and design principles.",
+    logo: metaFrontendLogo,
+  },
+  {
+    title: "Atlassian Jira Certification",
+    organization: "Atlassian",
+    credentials: "AJC-001",
+    issueDate: "January 2024",
+    expiryDate: "January 2026",
+    description:
+      "Demonstrated expertise in Jira administration and project management. Proficient in configuring and optimizing Jira workflows, managing user permissions, and implementing agile methodologies using Jira's features.",
+    logo: jiraLogo,
   },
   {
     title: "Salesforce Certified Platform Developer II",
