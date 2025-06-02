@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Calendar,
   MapPin,
+  Layout
 } from "lucide-react";
 
 const Skills = () => {
@@ -18,14 +19,26 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: "Frontend",
+      title: "Programming Languages",
       icon: Code,
+      color: "from-emerald-500 to-emerald-600",
+      skills: [
+        "JavaScript/TypeScript",
+        "Python",
+        "Java",
+        "SQL",
+        "Go (Basic)"
+      ],
+    },
+    {
+      title: "Frontend",
+      icon: Layout,
       color: "from-blue-500 to-blue-600",
       skills: [
-        "React/Next.js",
+        "React/Angular.js",
         "TypeScript",
-        "Vue.js",
         "Tailwind CSS",
+        "SCSS",
         "Redux",
         "HTML5/CSS3",
       ],
@@ -36,9 +49,7 @@ const Skills = () => {
       color: "from-gray-700 to-gray-800",
       skills: [
         "Node.js",
-        "Python",
-        "Express.js",
-        "Django",
+        "Firebase",
         "REST APIs",
         "GraphQL",
       ],
@@ -46,40 +57,28 @@ const Skills = () => {
     {
       title: "Cloud & DevOps",
       icon: Cloud,
-      color: "from-blue-400 to-blue-500",
-      skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform", "Azure"],
+      color: "from-blue-400 to-grey-500",
+      skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform"],
     },
     {
-      title: "Testing & Monitoring",
-      icon: TestTube,
-      color: "from-gray-600 to-gray-700",
+      title: "Testing & Version Control",
+      icon: GitBranch,
+      color: "from-red-600 to-blue-700",
       skills: [
         "Jest",
         "Cypress",
-        "Selenium",
-        "Grafana",
-        "New Relic",
+        "Mockito",
         "Prometheus",
-      ],
-    },
-    {
-      title: "Version Control",
-      icon: GitBranch,
-      color: "from-blue-600 to-blue-700",
-      skills: [
         "Git",
         "GitHub",
         "GitLab",
-        "Bitbucket",
-        "Git Flow",
-        "Conventional Commits",
       ],
     },
     {
       title: "Tools",
       icon: Wrench,
       color: "from-gray-500 to-gray-600",
-      skills: ["VS Code", "Postman", "Figma", "Slack", "Jira", "Notion"],
+      skills: ["VS Code", "Postman", "Figma","Power BI", "Jira/Confluence", "Notion"],
     },
   ];
 
@@ -139,12 +138,9 @@ const Skills = () => {
   }, []);
 
   return (
-    <section
-      id="skills"
-      className={`py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950 transition-opacity duration-500 ${
-        isVisible ? "opacity-100" : "opacity-0"
-      }`}
-    >
+    <section id="skills" className={`py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 dark:bg-gray-950 transition-opacity duration-500 ${
+      isVisible ? "opacity-100" : "opacity-0"
+    }`}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10 sm:mb-16 stagger-fade-in">
           <div className="flex items-center justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
