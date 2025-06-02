@@ -11,26 +11,26 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment processing, and admin dashboard.",
+      title: "Student Excahnge Web App",
+      description: "A responsive web app built with React, Node.js, and Firebase to help students buy/sell items on campus — improved engagement by 35% with secure login and real-time updates.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      tech: ["React.js", "Node.js", "Tailwind CSS", "Firebase", "Bcrypt.js", "Swiper.js"],
       color: "from-blue-500 to-cyan-500"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative project management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      title: "AR Weather Simulator App",
+      description: "An immersive mobile AR app simulating live weather models with intuitive user interaction across iOS and Android.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      tech: ["Next.js", "TypeScript", "PostgreSQL", "Socket.io"],
+      tech: ["Unity", "C#", "ARKit", "ARCore","Visual Scripting"],
       color: "from-purple-500 to-pink-500"
     },
     {
       id: 3,
-      title: "AI-Powered Analytics",
-      description: "A data visualization dashboard with machine learning insights, real-time charts, and predictive analytics for business intelligence.",
+      title: "GW Bars Platform – Local Bars Tracking Platform ",
+      description: "A digital platform for managing bar reservations and operations, streamlining bookings across multiple venues.",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      tech: ["Python", "React", "TensorFlow", "D3.js"],
+      tech: ["Oracle APEX", "MySQL"],
       color: "from-green-500 to-emerald-500"
     }
   ];
