@@ -70,7 +70,7 @@ const About = () => {
             <div className="grid grid-cols-2 gap-4 sm:gap-6 w-full max-w-md mx-auto md:mx-0">
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-blue-500">
-                  50+
+                  7+
                 </div>
                 <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                   Projects Completed
@@ -78,7 +78,7 @@ const About = () => {
               </div>
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-purple-500">
-                  5+
+                  1.5+
                 </div>
                 <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                   Years Experience

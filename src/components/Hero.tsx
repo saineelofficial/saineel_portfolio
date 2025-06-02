@@ -230,10 +230,12 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center animate-fade-in-right px-4">
-          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 transition-all duration-300 hover:scale-105 shadow-lg text-sm sm:text-base">
+          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-500 text-white rounded-xl font-medium hover:bg-blue-600 transition-all duration-300 hover:scale-105 shadow-lg text-sm sm:text-base" onClick={()=> window.open('https://www.github.com/saineelofficial', '_blank')}>
             View My Work
           </button>
-          <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-50 dark:hover:bg-gray-900 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 text-sm sm:text-base">
+          <button onClick={() =>{
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }} className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-300 rounded-xl font-medium hover:bg-gray-50 dark:hover:bg-gray-900 hover:border-gray-400 dark:hover:border-gray-500 transition-all duration-300 text-sm sm:text-base">
             Get In Touch
           </button>
         </div>
