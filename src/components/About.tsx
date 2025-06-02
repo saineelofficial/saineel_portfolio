@@ -47,23 +47,16 @@ const About = () => {
 
           <div className="w-full flex flex-col space-y-6 animate-fade-in-right order-1 md:order-2">
             <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-100 text-center md:text-left">
-              Passionate Developer & Creative Problem Solver
+              Transforming Ideas into Seamless Digital Experiences
             </h3>
 
             <div className="space-y-4">
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-center md:text-left">
-                With over 5 years of experience in full-stack development, I
-                specialize in creating beautiful, functional, and user-centered
-                digital experiences. My journey in tech started with a curiosity
-                about how things work and evolved into a passion for building
-                solutions that make a difference.
+                As a Full Stack Developer with a passion for innovation, I blend technical expertise with creative problem-solving to craft exceptional digital solutions. My journey spans from architecting robust backend systems to designing intuitive user interfaces, always with a focus on delivering impactful results that exceed expectations.
               </p>
 
               <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-center md:text-left">
-                I believe in the power of clean code, innovative design, and
-                continuous learning. When I'm not coding, you can find me
-                exploring new technologies, contributing to open-source
-                projects, or sharing knowledge with the developer community.
+                Armed with certifications from industry leaders like AWS and Salesforce, I bring a comprehensive understanding of modern development practices and cloud technologies. I thrive on challenges that push boundaries and create opportunities for learning and growth. Beyond coding, I'm dedicated to fostering collaboration and knowledge sharing within the tech community.
               </p>
             </div>
 
@@ -78,7 +71,8 @@ const About = () => {
               </div>
               <div className="text-center p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300">
                 <div className="text-2xl sm:text-3xl font-bold text-purple-500">
-                  1.5+
+                  1+
+                  
                 </div>
                 <div className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                   Years Experience
