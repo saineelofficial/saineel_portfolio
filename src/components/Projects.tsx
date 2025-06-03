@@ -16,7 +16,7 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Student Excahnge Web App",
+      title: "Student Exchange Web App",
       description: "A responsive web app built with React, Node.js, and Firebase to help students buy/sell items on campus — improved engagement by 35% with secure login and real-time updates.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       tech: ["React.js", "Node.js", "Tailwind CSS", "Firebase", "Bcrypt.js", "Swiper.js"],
