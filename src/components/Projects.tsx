@@ -100,13 +100,13 @@ const Projects = () => {
                   {/* View Counter */}
                   <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full flex items-center gap-2">
                     <Eye className="w-4 h-4" />
-                    <span className="text-sm font-medium btn-text-white">{projectViews[project.id]?.toLocaleString()}</span>
+                    <span className="text-sm font-medium">{projectViews[project.id]?.toLocaleString()}</span>
                   </div>
                   
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <button 
                       onClick={() => handleProjectInteraction(project.id, project.link)}
-                      className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors flex items-center justify-center gap-2 btn-text-white"
+                      className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors flex items-center justify-center gap-2"
                     >
                       <ExternalLink className="w-4 h-4" />
                       View Project
@@ -134,7 +134,7 @@ const Projects = () => {
                           bg-gradient-to-r ${project.color} text-white
                           hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25
                           transition-all duration-300 cursor-default
-                          animate-fade-in border-0 btn-text-white
+                          animate-fade-in border-0
                           dark:bg-gradient-to-r dark:text-white
                         `}
                         style={{
@@ -153,7 +153,7 @@ const Projects = () => {
                     onClick={() => handleProjectInteraction(project.id, project.link || project.code)}
                     disabled={!project.link && !project.code}
                     className={`
-                      px-8 py-3 rounded-lg font-semibold text-white btn-text-white
+                      px-8 py-3 rounded-lg font-semibold text-white
                       bg-gradient-to-r ${project.color}
                       hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25
                       transition-all duration-300 flex items-center gap-2

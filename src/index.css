@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -32,7 +31,7 @@
     --border: 229 229 234; /* Apple border gray */
     --input: 245 245 247;
     --ring: 0 122 255;
-    --sidebar-background: 255 255 255;
+    --sidebar-background: 251 251 253;
     --sidebar-foreground: 29 29 31;
     --sidebar-primary: 0 122 255;
     --sidebar-primary-foreground: 255 255 255;
@@ -88,29 +87,10 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    /* Ensure no yellow background appears */
-    background-color: hsl(var(--background)) !important;
   }
 
   html {
     scroll-behavior: smooth;
-    /* Ensure no yellow background appears */
-    background-color: hsl(var(--background)) !important;
-  }
-
-  /* Fix white text visibility issues in mobile/light mode */
-  .text-white {
-    @apply text-gray-900 dark:text-white;
-  }
-
-  /* Specific fixes for navigation and other components */
-  .nav-text-white {
-    @apply text-white;
-  }
-
-  /* Fix button text visibility */
-  .btn-text-white {
-    @apply text-white;
   }
 }
 
