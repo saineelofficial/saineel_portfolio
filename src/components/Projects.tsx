@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Projector, Eye, ExternalLink } from 'lucide-react';
 import { Badge } from './ui/badge';
 
-import flip_health from '../assets/projects/flip_health.png';
+import flip_health from '../assets/projects/Flip_Health.png';
 import gwbars from '../assets/projects/GW_Bars.png';
 
 const Projects = () => {
