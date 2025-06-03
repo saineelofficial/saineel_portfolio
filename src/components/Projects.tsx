@@ -1,16 +1,15 @@
 
 import React, { useState } from 'react';
-import { Projector, Eye } from 'lucide-react';
+import { Projector, Eye, ExternalLink } from 'lucide-react';
+import { Badge } from './ui/badge';
 
 import flip_health from '../assets/projects/flip_health.png';
 import gwbars from '../assets/projects/GW_Bars.png';
 
-
-
 const Projects = () => {
   const [projectViews, setProjectViews] = useState(() => {
     const saved = localStorage.getItem('projectViews');
-    return saved ? JSON.parse(saved) : { 1: 0, 2: 0, 3: 0 };
+    return saved ? JSON.parse(saved) : { 1: 0, 2: 0, 3: 0, 4: 0 };
   });
 
   const projects = [
@@ -56,12 +55,15 @@ const Projects = () => {
     }
   ];
 
-  const handleProjectInteraction = (projectId: number) => {
-    const newViews = { ...projectViews };
-    newViews[projectId] = (newViews[projectId] || 0) + 1;
-    setProjectViews(newViews);
-    localStorage.setItem('projectViews', JSON.stringify(newViews));
-    console.log(`Project ${projectId} views: ${newViews[projectId]}`);
+  const handleProjectInteraction = (projectId: number, url: string) => {
+    if (url) {
+      const newViews = { ...projectViews };
+      newViews[projectId] = (newViews[projectId] || 0) + 1;
+      setProjectViews(newViews);
+      localStorage.setItem('projectViews', JSON.stringify(newViews));
+      console.log(`Project ${projectId} views: ${newViews[projectId]}`);
+      window.open(url, '_blank');
+    }
   };
 
   return (
@@ -103,11 +105,10 @@ const Projects = () => {
                   
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <button 
-                      onClick={() => {handleProjectInteraction(project.id);
-                      window.open(project.link, '_blank');
-                      }}
-                      className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors"
+                      onClick={() => handleProjectInteraction(project.id, project.link)}
+                      className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors flex items-center justify-center gap-2"
                     >
+                      <ExternalLink className="w-4 h-4" />
                       View Project
                     </button>
                   </div>
@@ -120,33 +121,48 @@ const Projects = () => {
                   <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">{project.description}</p>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
-                  {project.tech.map((tech) => (
-                    <span 
-                      key={tech}
-                      className={`px-4 py-2 bg-gradient-to-r ${project.color} text-white rounded-full text-sm font-medium hover:scale-110 transition-transform duration-200`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                {/* Modern Tech Stack Design */}
+                <div className="space-y-3">
+                  <h4 className="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Tech Stack</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, techIndex) => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className={`
+                          px-3 py-1.5 text-sm font-medium rounded-full
+                          bg-gradient-to-r ${project.color} text-white
+                          hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25
+                          transition-all duration-300 cursor-default
+                          animate-fade-in border-0
+                          dark:bg-gradient-to-r dark:text-white
+                        `}
+                        style={{
+                          animationDelay: `${techIndex * 100}ms`
+                        }}
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex gap-4">
+                {/* Single View Button */}
+                <div className="pt-4">
                   <button 
-                    onClick={() => {handleProjectInteraction(project.id);
-                    window.open(project.link, '_blank');
-                    }}
-                    className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-300"
+                    onClick={() => handleProjectInteraction(project.id, project.link || project.code)}
+                    disabled={!project.link && !project.code}
+                    className={`
+                      px-8 py-3 rounded-lg font-semibold text-white
+                      bg-gradient-to-r ${project.color}
+                      hover:scale-105 hover:shadow-xl hover:shadow-blue-500/25
+                      transition-all duration-300 flex items-center gap-2
+                      disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
+                      dark:shadow-gray-900/50
+                    `}
                   >
-                    Live Demo
-                  </button>
-                  <button 
-                    onClick={() => {handleProjectInteraction(project.id);
-                    window.open(project.code, '_blank');
-                    }}
-                    className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
-                  >
-                    View Code
+                    <ExternalLink className="w-4 h-4" />
+                    View
                   </button>
                 </div>
               </div>
