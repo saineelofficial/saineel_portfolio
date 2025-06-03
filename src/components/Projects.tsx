@@ -2,6 +2,11 @@
 import React, { useState } from 'react';
 import { Projector, Eye } from 'lucide-react';
 
+import flip_health from '../assets/projects/flip_health.png';
+import gwbars from '../assets/projects/GW_Bars.png';
+
+
+
 const Projects = () => {
   const [projectViews, setProjectViews] = useState(() => {
     const saved = localStorage.getItem('projectViews');
@@ -15,7 +20,9 @@ const Projects = () => {
       description: "A responsive web app built with React, Node.js, and Firebase to help students buy/sell items on campus — improved engagement by 35% with secure login and real-time updates.",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       tech: ["React.js", "Node.js", "Tailwind CSS", "Firebase", "Bcrypt.js", "Swiper.js"],
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
+      link:"",
+      code:"",
     },
     {
       id: 2,
@@ -23,15 +30,29 @@ const Projects = () => {
       description: "An immersive mobile AR app simulating live weather models with intuitive user interaction across iOS and Android.",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
       tech: ["Unity", "C#", "ARKit", "ARCore","Visual Scripting"],
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500",
+      link:"",
+      code:"",
     },
     {
       id: 3,
+      title: "FlipHealth - Your Family Doctor in Your Pocket",
+      description: "A modern healthcare platform built with HTML5, CSS3, and JavaScript, featuring a responsive and intuitive interface powered by Bootstrap 5.",
+      image: flip_health,
+      tech: ["HTML5/CSS3", "Vanilla JS", "Bootstrap 5", "JQuery", "OwlCarousel"],
+      color: "from-red-600 to-orange-400",
+      link:"https://saineelofficial.github.io/flip_health/",
+      code:"https://www.github.com/saineelofficial/saineelofficial.github.io/tree/master/flip_health",
+    },
+    {
+      id: 4,
       title: "GW Bars Platform – Local Bars Tracking Platform ",
       description: "A digital platform for managing bar reservations and operations, streamlining bookings across multiple venues.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      image: gwbars,
       tech: ["Oracle APEX", "MySQL"],
-      color: "from-green-500 to-emerald-500"
+      color: "from-green-500 to-emerald-500",
+      link:"",
+      code:"",
     }
   ];
 
@@ -82,7 +103,9 @@ const Projects = () => {
                   
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
                     <button 
-                      onClick={() => handleProjectInteraction(project.id)}
+                      onClick={() => {handleProjectInteraction(project.id);
+                      window.open(project.link, '_blank');
+                      }}
                       className="w-full py-3 bg-white/20 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/30 transition-colors"
                     >
                       View Project
@@ -110,13 +133,17 @@ const Projects = () => {
 
                 <div className="flex gap-4">
                   <button 
-                    onClick={() => handleProjectInteraction(project.id)}
+                    onClick={() => {handleProjectInteraction(project.id);
+                    window.open(project.link, '_blank');
+                    }}
                     className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-300"
                   >
                     Live Demo
                   </button>
                   <button 
-                    onClick={() => handleProjectInteraction(project.id)}
+                    onClick={() => {handleProjectInteraction(project.id);
+                    window.open(project.code, '_blank');
+                    }}
                     className="px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
                   >
                     View Code
