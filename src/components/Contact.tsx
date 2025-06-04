@@ -73,7 +73,7 @@ const Contact = () => {
       icon: Github,
       href: "https://www.github.com/saineelofficial",
       label: "GitHub",
-      color: "#333 dark:text-white",
+      color: "#333",
     },
     {
       icon: Linkedin,
@@ -145,7 +145,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-gray-900 dark:text-white">
             Let's Create Something
             <motion.span
               className="block bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
@@ -311,8 +311,7 @@ const Contact = () => {
                     key={index}
                     href={social.href}
                     whileHover={{ scale: 1.1, y: -5 }}
-                    className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
-                    style={{ color: social.color }}
+                    className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300 text-gray-700 dark:text-gray-300"
                   >
                     <social.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </motion.a>

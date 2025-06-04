@@ -88,13 +88,16 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;
-    /* Ensure no yellow background appears */
     background-color: hsl(var(--background)) !important;
   }
 
   html {
     scroll-behavior: smooth;
-    /* Ensure no yellow background appears */
+    background-color: hsl(var(--background)) !important;
+  }
+
+  /* Prevent any yellow backgrounds */
+  #root {
     background-color: hsl(var(--background)) !important;
   }
 }
@@ -134,6 +137,15 @@
   .stagger-fade-in > *:nth-child(4) { animation-delay: 0.4s; }
   .stagger-fade-in > *:nth-child(5) { animation-delay: 0.5s; }
   .stagger-fade-in > *:nth-child(6) { animation-delay: 0.6s; }
+
+  /* Mobile-friendly text classes */
+  .mobile-text-contrast {
+    @apply text-gray-900 dark:text-white;
+  }
+
+  .mobile-button-text {
+    @apply text-white;
+  }
 }
 
 @keyframes gradient-shift {
