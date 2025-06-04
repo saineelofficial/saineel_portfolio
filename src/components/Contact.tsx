@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from "react";
 import {
   Mail,
@@ -81,7 +80,6 @@ const Contact = () => {
       label: "LinkedIn",
       color: "#0077B5",
     },
-    { icon: Twitter, href: "#", label: "Twitter", color: "#1DA1F2" },
   ];
 
   const contactInfo = [

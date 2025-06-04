@@ -64,7 +64,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <div className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
-            Portfolio
+            Workbook
           </div>
 
           {/* Desktop/Tablet Navigation */}
