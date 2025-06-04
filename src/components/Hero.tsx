@@ -115,20 +115,20 @@ const Hero = () => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
 
-        // Mouse interaction
+        // Mouse interaction - increased force and range
         const dx = mouseRef.current.x - particle.x;
         const dy = mouseRef.current.y - particle.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 200;
+        const maxDistance = 250; // Increased interaction range
 
         if (distance < maxDistance) {
           const force = (maxDistance - distance) / maxDistance;
-          particle.speedX += (dx / distance) * force * 0.02;
-          particle.speedY += (dy / distance) * force * 0.02;
+          particle.speedX += (dx / distance) * force * 0.05; // Increased force from 0.02 to 0.05
+          particle.speedY += (dy / distance) * force * 0.05;
         }
 
         // Speed limit
-        const maxSpeed = 2;
+        const maxSpeed = 3; // Increased from 2 to 3
         const speed = Math.sqrt(
           particle.speedX * particle.speedX + particle.speedY * particle.speedY
         );
@@ -137,9 +137,8 @@ const Hero = () => {
           particle.speedY = (particle.speedY / speed) * maxSpeed;
         }
 
-        // Add some friction
-        particle.speedX *= 0.99;
-        particle.speedY *= 0.99;
+        // Reduced friction for more responsive movement
+        particle.speedX *= 0.995; // Reduced friction from 0.99 to 0.995
 
         // Wrap around edges
         if (particle.x < 0) particle.x = canvas.width;

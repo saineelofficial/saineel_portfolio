@@ -18,8 +18,8 @@ export const useTheme = () => {
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDark, setIsDark] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved ? JSON.parse(saved) : false;
+    // Always default to dark mode - remove any existing theme preference
+    return true;
   });
 
   useEffect(() => {

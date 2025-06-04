@@ -1,73 +1,75 @@
-# Welcome to your Lovable project
+# Saineel's Portfolio Website
 
-## Project info
+![Portfolio Banner](https://saineel.vercel.app)
 
-**URL**: https://lovable.dev/projects/fa879195-1042-4a3d-9061-4cbd8bb11085
 
-## How can I edit this code?
+## 🚀 Overview
+A modern, responsive personal portfolio website built with React, TypeScript, and Vite. This portfolio showcases my professional experience, projects, skills, and certifications in an interactive and user-friendly interface.
 
-There are several ways of editing your application.
+## ⚡ Tech Stack
+- **Frontend Framework**: React with TypeScript
+- **Build Tool**: Vite
+- **Styling**: TailwindCSS with Shadcn UI components
+- **Animation**: Framer Motion
+- **Email Service**: EmailJS
+- **UI Components**: Radix UI
+- **State Management**: React Query
 
-**Use Lovable**
+## 🛠️ Features
+- Responsive design that works on all devices
+- Dark/Light theme support
+- Interactive UI components
+- Smooth animations and transitions
+- Contact form with EmailJS integration
+- Project showcase section
+- Skills and certifications display
+- Professional experience timeline
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/fa879195-1042-4a3d-9061-4cbd8bb11085) and start prompting.
+## 🎨 Project Structure
 
-Changes made via Lovable will be committed automatically to this repo.
+```plaintext
+├── public/             # Static assets
+├── src/
+│   ├── assets/         # Images and media files
+│   ├── components/     # React components
+│   ├── contexts/       # React contexts
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions and helpers
+│   └── pages/          # Page-level components (Home, Projects, etc.)
+```
 
-**Use your preferred IDE**
+## 📦 Installation
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+```bash
+# Clone the repository
+git clone <repository-url>
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Navigate to project directory
+cd saineel_portfolio
 
-Follow these steps:
+# Install dependencies
+npm install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 🔧 Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a `.env` file in the root directory and add the following:
 
-**Use GitHub Codespaces**
+```plaintext
+VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📜 Available Scripts
+```bash
+npm run dev        # Start development server
+npm run build      # Create production build
+npm run build:dev  # Create development build
+npm run lint       # Run ESLint for code quality
+npm run preview    # Preview production build
+```
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/fa879195-1042-4a3d-9061-4cbd8bb11085) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
