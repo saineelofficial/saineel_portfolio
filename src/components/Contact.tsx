@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from "react";
 import {
   Mail,
@@ -107,14 +108,14 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 relative overflow-hidden"
+      className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50 dark:from-black dark:to-gray-900 relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute inset-0 grid grid-cols-3 grid-rows-3">
         {[...Array(9)].map((_, i) => (
           <motion.div
             key={i}
-            className="w-32 h-32 bg-blue-500/5 rounded-full"
+            className="w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-blue-500/5 rounded-full"
             initial={{ scale: 0.8, opacity: 0.3 }}
             animate={{
               scale: [0.8, 1.2, 0.8],
@@ -142,9 +143,9 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-12 sm:mb-16 lg:mb-20"
         >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             Let's Create Something
             <motion.span
               className="block bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"
@@ -160,23 +161,23 @@ const Contact = () => {
               Amazing Together
             </motion.span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed px-4">
             Ready to bring your ideas to life? I'm always excited to work on new
             projects and collaborate with innovative teams.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
           {/* Left side - Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="relative group"
+            className="relative group w-full"
           >
-            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
-            <div className="relative bg-white dark:bg-gray-900 p-8 md:p-12 rounded-3xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
-              <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 flex items-center gap-3">
+            <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl sm:rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-300"></div>
+            <div className="relative bg-white dark:bg-gray-900 p-6 sm:p-8 lg:p-12 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6 sm:mb-8 flex items-center gap-3">
                 Send me a message
                 <motion.div
                   animate={{ rotate: [0, 14, -8, 0] }}
@@ -190,8 +191,8 @@ const Contact = () => {
                 </motion.div>
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div className="group">
                     <label
                       htmlFor="name"
@@ -268,29 +269,29 @@ const Contact = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="space-y-12"
+            className="space-y-8 sm:space-y-12 w-full"
           >
             {/* Contact Information */}
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
                 Contact Information
               </h3>
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => (
                   <motion.a
                     key={index}
                     href={info.href}
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-4 p-4 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300"
+                    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl sm:rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-300"
                   >
-                    <div className="p-3 bg-blue-500/10 rounded-xl text-blue-500">
-                      <info.icon className="w-6 h-6" />
+                    <div className="p-2 sm:p-3 bg-blue-500/10 rounded-lg sm:rounded-xl text-blue-500 flex-shrink-0">
+                      <info.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <div>
-                      <h4 className="font-medium text-gray-900 dark:text-white">
+                    <div className="min-w-0 flex-1">
+                      <h4 className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">
                         {info.label}
                       </h4>
-                      <p className="text-gray-600 dark:text-gray-400">
+                      <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base break-words">
                         {info.value}
                       </p>
                     </div>
@@ -300,20 +301,20 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <div className="bg-white dark:bg-gray-900 p-8 rounded-3xl border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <div className="bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-2xl sm:rounded-3xl border border-gray-200 dark:border-gray-700">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
                 Connect with Me
               </h3>
-              <div className="flex justify-center gap-6">
+              <div className="flex justify-center gap-4 sm:gap-6">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={index}
                     href={social.href}
                     whileHover={{ scale: 1.1, y: -5 }}
-                    className="p-4 rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
+                    className="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-300"
                     style={{ color: social.color }}
                   >
-                    <social.icon className="w-6 h-6" />
+                    <social.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                   </motion.a>
                 ))}
               </div>
