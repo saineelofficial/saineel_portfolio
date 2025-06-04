@@ -36,3 +36,27 @@ npm install
 
 # Start development server
 npm run dev
+```
+
+## 🔧 Environment Variables
+
+Create a `.env` file in the root directory and add the following:
+
+```plaintext
+VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+```
+
+## 🎨 Project Structure
+
+```plaintext
+├── public/             # Static assets
+├── src/
+│   ├── assets/         # Images and media files
+│   ├── components/     # React components
+│   ├── contexts/       # React contexts
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions and helpers
+│   └── pages/          # Page-level components (Home, Projects, etc.)
+```
