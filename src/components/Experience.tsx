@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Briefcase } from 'lucide-react';
 
 const Experience = () => {
   const experiences = [
@@ -59,7 +60,13 @@ const Experience = () => {
     <section id="experience" className="py-20 px-6 bg-gray-50 dark:bg-gray-900 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Work Experience</h2>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="relative">
+              <Briefcase className="w-8 h-8 text-blue-500 animate-float" />
+              <div className="absolute inset-0 w-8 h-8 bg-blue-500/20 rounded-full animate-ping"></div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Work Experience</h2>
+          </div>
           <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto animate-progress"></div>
           <p className="text-gray-600 dark:text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
             My professional journey and key accomplishments
@@ -79,14 +86,12 @@ const Experience = () => {
                 }`}
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                {/* Fixed Timeline dot with proper centering */}
-                <div className="relative flex items-center justify-center w-16 h-16">
-                  <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-white dark:border-gray-900 z-10 group-hover:scale-125 transition-transform duration-300">
-                    <div className="absolute inset-0 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-ping opacity-75"></div>
-                  </div>
+                {/* Enhanced Timeline dot with pulse effect */}
+                <div className="absolute left-6 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full border-4 border-white dark:border-gray-900 z-10 group-hover:scale-125 transition-transform duration-300">
+                  <div className="absolute inset-0 w-4 h-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full animate-ping opacity-75"></div>
                 </div>
                 
-                <div className="flex-1">
+                <div className="ml-16 flex-1">
                   <div className="bg-white dark:bg-gray-800/50 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/20 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-1 group-hover:border-blue-500/30">
                     {/* Animated background gradient on hover */}
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
