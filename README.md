@@ -1,5 +1,8 @@
 # Saineel's Portfolio Website
 
+![Portfolio Banner](https://saineel.vercel.app)
+
+
 ## 🚀 Overview
 A modern, responsive personal portfolio website built with React, TypeScript, and Vite. This portfolio showcases my professional experience, projects, skills, and certifications in an interactive and user-friendly interface.
 
@@ -21,6 +24,19 @@ A modern, responsive personal portfolio website built with React, TypeScript, an
 - Project showcase section
 - Skills and certifications display
 - Professional experience timeline
+
+## 🎨 Project Structure
+
+```plaintext
+├── public/             # Static assets
+├── src/
+│   ├── assets/         # Images and media files
+│   ├── components/     # React components
+│   ├── contexts/       # React contexts
+│   ├── hooks/          # Custom React hooks
+│   ├── lib/            # Utility functions and helpers
+│   └── pages/          # Page-level components (Home, Projects, etc.)
+```
 
 ## 📦 Installation
 
@@ -48,15 +64,12 @@ VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
 VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
 ```
 
-## 🎨 Project Structure
-
-```plaintext
-├── public/             # Static assets
-├── src/
-│   ├── assets/         # Images and media files
-│   ├── components/     # React components
-│   ├── contexts/       # React contexts
-│   ├── hooks/          # Custom React hooks
-│   ├── lib/            # Utility functions and helpers
-│   └── pages/          # Page-level components (Home, Projects, etc.)
+## 📜 Available Scripts
+```bash
+npm run dev        # Start development server
+npm run build      # Create production build
+npm run build:dev  # Create development build
+npm run lint       # Run ESLint for code quality
+npm run preview    # Preview production build
 ```
+
