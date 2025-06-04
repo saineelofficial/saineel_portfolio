@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Briefcase } from 'lucide-react';
 
@@ -67,7 +66,7 @@ const Experience = () => {
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Work Experience</h2>
           </div>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto animate-progress"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
           <p className="text-gray-600 dark:text-gray-400 text-lg mt-6 max-w-2xl mx-auto">
             My professional journey and key accomplishments
           </p>
