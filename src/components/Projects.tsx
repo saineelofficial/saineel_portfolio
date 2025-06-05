@@ -5,6 +5,7 @@ import { Badge } from './ui/badge';
 
 import flip_health from '../assets/projects/Flip_Health.png';
 import gwbars from '../assets/projects/GW_Bars.png';
+import ar from '../assets/projects/AR.png';
 
 const Projects = () => {
   const [projectViews, setProjectViews] = useState(() => {
@@ -27,7 +28,7 @@ const Projects = () => {
       id: 2,
       title: "AR Weather Simulator App",
       description: "An immersive mobile AR app simulating live weather models with intuitive user interaction across iOS and Android.",
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
+      image: ar,
       tech: ["Unity", "C#", "ARKit", "ARCore","Visual Scripting"],
       color: "from-purple-500 to-pink-500",
       link:"",
