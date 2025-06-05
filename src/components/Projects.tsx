@@ -5,7 +5,7 @@ import { Badge } from './ui/badge';
 
 import flip_health from '../assets/projects/Flip_Health.png';
 import gwbars from '../assets/projects/GW_Bars.png';
-import ar from '../assets/projects/AR.png';
+import ar from '../assets/projects/AR_App.png';
 
 const Projects = () => {
   const [projectViews, setProjectViews] = useState(() => {
