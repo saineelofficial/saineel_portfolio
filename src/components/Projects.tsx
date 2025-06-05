@@ -20,7 +20,7 @@ const Projects = () => {
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       tech: ["React.js", "Node.js", "Tailwind CSS", "Firebase", "Bcrypt.js", "Swiper.js"],
       color: "from-blue-500 to-cyan-500",
-      link:"",
+      link:"https://github.com/saineelofficial/CSCI_6234_10_Group_6",
       code:"",
     },
     {
