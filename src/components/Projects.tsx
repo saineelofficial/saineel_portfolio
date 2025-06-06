@@ -31,7 +31,7 @@ const Projects = () => {
       image: ar,
       tech: ["Unity", "C#", "ARKit", "ARCore","Visual Scripting"],
       color: "from-purple-500 to-pink-500",
-      link:"",
+      link:"https://github.com/saineelofficial/Weather-Simulator-AR",
       code:"",
     },
     {
