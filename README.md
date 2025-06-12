@@ -1,6 +1,6 @@
 # Saineel's Portfolio Website
 
-<a href="https://www.saineel.vercel.app">![Portfolio Banner](./src/assets/banner.png)</a>
+<a href="https://saineel.vercel.app">![Portfolio Banner](./src/assets/banner.png)</a>
 
 
 ## 🚀 Overview
