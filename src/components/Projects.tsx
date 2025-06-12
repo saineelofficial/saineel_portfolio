@@ -1,17 +1,16 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Projector, Eye, ExternalLink } from 'lucide-react';
 import { Badge } from './ui/badge';
+import { supabase } from '@/integrations/supabase/client';
 
 import flip_health from '../assets/projects/Flip_Health.png';
 import gwbars from '../assets/projects/GW_Bars.png';
 import ar from '../assets/projects/AR_App.png';
 
 const Projects = () => {
-  const [projectViews, setProjectViews] = useState(() => {
-    const saved = localStorage.getItem('projectViews');
-    return saved ? JSON.parse(saved) : { 1: 0, 2: 0, 3: 0, 4: 0 };
-  });
+  const [projectViews, setProjectViews] = useState<{ [key: number]: number }>({});
+  const [loading, setLoading] = useState(true);
 
   const projects = [
     {
@@ -56,13 +55,57 @@ const Projects = () => {
     }
   ];
 
-  const handleProjectInteraction = (projectId: number, url: string) => {
+  // Fetch initial view counts from Supabase
+  useEffect(() => {
+    const fetchViewCounts = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('project_views')
+          .select('project_id, view_count');
+
+        if (error) {
+          console.error('Error fetching view counts:', error);
+          return;
+        }
+
+        const viewsMap: { [key: number]: number } = {};
+        data?.forEach(item => {
+          viewsMap[item.project_id] = item.view_count;
+        });
+        
+        setProjectViews(viewsMap);
+      } catch (error) {
+        console.error('Error fetching view counts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchViewCounts();
+  }, []);
+
+  const handleProjectInteraction = async (projectId: number, url: string) => {
     if (url) {
-      const newViews = { ...projectViews };
-      newViews[projectId] = (newViews[projectId] || 0) + 1;
-      setProjectViews(newViews);
-      localStorage.setItem('projectViews', JSON.stringify(newViews));
-      console.log(`Project ${projectId} views: ${newViews[projectId]}`);
+      try {
+        // Call the increment function
+        const { data, error } = await supabase.rpc('increment_project_view', {
+          p_project_id: projectId
+        });
+
+        if (error) {
+          console.error('Error incrementing view count:', error);
+        } else {
+          // Update local state with the new count
+          setProjectViews(prev => ({
+            ...prev,
+            [projectId]: data
+          }));
+          console.log(`Project ${projectId} views: ${data}`);
+        }
+      } catch (error) {
+        console.error('Error calling increment function:', error);
+      }
+
       window.open(url, '_blank');
     }
   };
@@ -101,7 +144,9 @@ const Projects = () => {
                   {/* View Counter */}
                   <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white px-3 py-1 rounded-full flex items-center gap-2">
                     <Eye className="w-4 h-4" />
-                    <span className="text-sm font-medium">{projectViews[project.id]?.toLocaleString()}</span>
+                    <span className="text-sm font-medium">
+                      {loading ? '...' : (projectViews[project.id] || 0).toLocaleString()}
+                    </span>
                   </div>
                   
                   <div className="absolute bottom-4 left-4 right-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">

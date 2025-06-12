@@ -9,13 +9,39 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      project_views: {
+        Row: {
+          created_at: string
+          id: number
+          project_id: number
+          updated_at: string
+          view_count: number
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          project_id: number
+          updated_at?: string
+          view_count?: number
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          project_id?: number
+          updated_at?: string
+          view_count?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment_project_view: {
+        Args: { p_project_id: number }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
